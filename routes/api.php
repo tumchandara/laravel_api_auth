@@ -4,7 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SubcategoryController;
-
+use App\Http\Controllers\LotteryController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -54,3 +54,7 @@ Route::middleware('auth:sanctum')->resource('auth-categories', CategoryControlle
 Route::middleware('auth:sanctum')->resource('auth-subcategories', SubcategoryController::class);
 
 ////////////API AUTH////////////
+
+
+
+Route::get('/generate-lottery-numbers', 'App\Http\Controllers\LotteryController@generate');
