@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\SubcategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,9 +24,33 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //     // Your protected route logic
 // });
 
+
+//Testing Auth API
 Route::middleware('auth:sanctum')->get('/test-auth-api', function () {
     // Your protected route logic
     return 'API Access Successful';
 
 });
 
+
+////////////Not secure way////////////
+
+// Category routes 
+Route::resource('categories', CategoryController::class);
+
+// Subcategory routes
+Route::resource('subcategories', SubcategoryController::class);
+
+////////////Not secure way////////////
+
+
+
+////////////API AUTH////////////
+
+// Category routes 
+Route::middleware('auth:sanctum')->resource('auth-categories', CategoryController::class);
+
+// Subcategory routes
+Route::middleware('auth:sanctum')->resource('auth-subcategories', SubcategoryController::class);
+
+////////////API AUTH////////////
